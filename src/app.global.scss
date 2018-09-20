@@ -1,0 +1,12 @@
+:global {
+	@import '~@streamjar/ui-shared/styles/ui';
+	@import '~@streamjar/ui-shared/styles/components/ripple/ripple';
+	@import '~@streamjar/ui-shared/styles/theme';
+
+	$theme: (
+		gradient: linear-gradient(to bottom right, #693194 0%, #633884 100%),
+		primary: #643688,
+	);
+
+	@include jar-theme($theme);
+}

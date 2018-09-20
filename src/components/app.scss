@@ -1,0 +1,24 @@
+.header {
+	background-image: url(/assets/background.png);
+	background-size: cover;
+	background-position: center 160px;
+	padding: 0px 30px;
+
+	&__logo {
+		height: 50px;
+	}
+
+	&__lead {
+		margin-top: 2px;
+		font-size: 1.15em;
+		line-height: 65px;
+		font-weight: bold;
+		color: #FFF;
+		text-transform: uppercase;
+		opacity: .75;
+	}
+
+	&__navigation {
+		border-top: 1px solid rgba(255,255,255,.08);
+	}
+}

@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist",
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "strict": true,
+		"strictNullChecks": true,
+		"moduleResolution": "node",
+        "experimentalDecorators": true,
+        "module": "commonjs",
+        "target": "es2015",
+        "lib": [
+			"es2016",
+			"dom"
+        ],
+        "jsx": "react"
+    },
+    "include": [
+        "./src/**/*"
+    ]
+}

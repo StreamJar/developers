@@ -1,0 +1,57 @@
+.apiDocs {
+	margin: 20px 20px;
+
+	&__page, &__endpoint {
+		height: calc(100vh - 160px);
+		overflow-y: auto;
+		overflow-x: hidden;
+	}
+
+	&__endpoint {
+		background: #272727;
+	}
+
+	&__page {
+		margin: 0 15px;
+	}
+
+	&__endpoint {
+		border-radius: 4px;
+	}
+
+	&__title {
+		&:first-child {
+			margin-top: 0;
+		}
+
+		border-left: 1px solid rgba(#FFF, .1);
+		margin-top: 30px;
+		padding-left: 15px;
+		padding-bottom: 10px;
+	}
+
+	&__content {
+		height: calc(100vh - 160px);
+		background: #272727;
+		padding: 20px;
+		overflow-y: auto;
+		overflow-x: hidden;
+		border-radius: 4px;
+
+		:global {
+			.jarBtn {
+				margin: 0px;
+				width: 100%;
+
+				border-left: 1px solid rgba(#FFF, .1);
+
+				.jar-button {
+					margin-left: 5px;
+					place-content: center flex-start;
+					align-items: flex-start;
+					border-radius: none;
+				}
+			}
+		}
+	}
+}

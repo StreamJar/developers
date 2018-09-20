@@ -1,0 +1,53 @@
+{
+	"extends": ["tslint-microsoft-contrib", "tslint-react"],
+	"rules": {
+		"indent": [
+			true,
+			"tabs"
+		],
+		"trailing-comma": [
+			true,
+			{
+				"multiline": "always",
+				"singleline": "never"
+			}
+		],
+		"quotemark": [
+			true,
+			"single",
+			"jsx-double"
+		],
+		"linebreak-style": false,
+		"missing-jsdoc": false,
+		"completed-docs": false,
+		"no-any": false,
+		"no-relative-imports": false,
+		"jsx-self-close": false,
+		"typedef": [
+			true,
+			"parameters"
+		],
+		"promise-function-async": false,
+		"ordered-imports": false,
+		"no-non-null-assertion": false,
+		"export-name": false,
+		"no-unsafe-any": false,
+		"react-no-dangerous-html": false,
+		"strict-boolean-expressions": false,
+		"variable-name": false,
+		"switch-default": false,
+		"no-reserved-keywords": false,
+		"jsx-alignment": false,
+		"import-name": false,
+		"react-a11y-event-has-role": false,
+		"no-submodule-imports": false,
+		"no-default-export": false,
+		"no-import-side-effect": false,
+		"no-increment-decrement": false,
+		"no-parameter-properties": false,
+
+		// todo: remove these
+		"no-console": false,
+		"no-suspicious-comment": false
+	}
+}
