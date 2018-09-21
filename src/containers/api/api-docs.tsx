@@ -1,7 +1,7 @@
 import { Button, Spinner } from '@streamjar/ui-react';
 import * as React from 'react';
 import { connect, Dispatch } from 'react-redux';
-import { Link, Route } from 'react-router-dom'; \
+import { Link, Route } from 'react-router-dom';
 
 import { ApiDocAction } from '../../actions/api-doc';
 import { ApiAuthenticationPage } from '../../components/api/pages/authentication';
@@ -45,7 +45,7 @@ class ApiDocsComponent extends React.Component<IApiDocsProps> {
 			<div className="layout-column layout-align-center-center" style={{ width: '100%' }}>
 				<Spinner />
 
-				<p style={{ fontWeight: 500, opacity: 0.2 }}> Fetching API Documentation </p>
+				<p style={{ fontWeight: 500, opacity: 0.2, marginTop: 10 }}> Fetching API Documentation </p>
 			</div>
 		);
 

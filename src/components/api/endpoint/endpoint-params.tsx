@@ -1,9 +1,8 @@
 import { IDocumentationParam } from '@streamjar/frontend-common-core/models';
 import * as React from 'react';
 
-import { EndpointSection } from './endpoint-section';
-
 import * as styles from './endpoint-params.scss';
+import { EndpointSection } from './endpoint-section';
 
 export interface IEndpointParamsProps {
 	name: string;

@@ -4,8 +4,8 @@ import { Link, Route } from 'react-router-dom';
 
 import ApiDocs from '../containers/api/api-docs';
 import '../util/ApiHelper';
-
 import * as appStyles from './app.scss';
+import { OAuth } from './oauth/oauth';
 
 export class App extends React.Component {
 	public render(): JSX.Element {
@@ -33,6 +33,7 @@ export class App extends React.Component {
 				</header>
 
 				<Route path="/api" component={ApiDocs} />
+				<Route path="/oauth" component={OAuth} />
 			</React.Fragment>
 		);
 	}

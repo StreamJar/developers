@@ -1,0 +1,14 @@
+.oauth {
+	margin: 20px;
+}
+
+.oauthClients {
+	:global .jar-section {
+		margin: 0;
+	}
+}
+
+.oauthContainer {
+	height: calc(100vh - 118px);
+    overflow-y: scroll;
+}
