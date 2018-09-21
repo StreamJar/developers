@@ -1,8 +1,9 @@
-import { IDocumentationResponse } from '@streamjar/frontend-common-core/dist/src/models/api-docs.model';
+import { IDocumentationResponse } from '@streamjar/frontend-common-core/models';
 import { Tab, Tabs } from '@streamjar/ui-react';
 import * as React from 'react';
 import ReactJson from 'react-json-view';
 
+import * as styles from './endpoint-responses.scss';
 import { EndpointSection } from './endpoint-section';
 
 export interface IEndpointResponsesProps {
@@ -12,8 +13,6 @@ export interface IEndpointResponsesProps {
 export interface IEndpointResponsesState {
 	currentTab: number;
 }
-
-import * as styles from './endpoint-responses.scss';
 
 export class EndpointResponses extends React.PureComponent<IEndpointResponsesProps, IEndpointResponsesState> {
 
