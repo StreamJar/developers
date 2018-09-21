@@ -1,4 +1,3 @@
-import { ApiDocs } from '@streamjar/frontend-common-core/models';
 import { HttpService } from '@streamjar/frontend-common-core';
 import { Observable, Subject } from 'rxjs';
 

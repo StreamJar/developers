@@ -1,8 +1,8 @@
 import { normalize } from 'normalizr';
 
-import { category } from './../state/api-docs';
+import { ApiDocAction, ApiDocActionTypes } from '../actions/api-doc';
 import { IApiDocsState } from '../state/api-docs';
-import { ApiDocActionTypes, ApiDocAction } from '../actions/api-doc';
+import { category } from './../state/api-docs';
 
 export const defaultApiDocsState: IApiDocsState  = {
 	entities: {

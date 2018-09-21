@@ -1,5 +1,5 @@
-import * as React from 'react';
 import { IDocumentationEndpoint } from '@streamjar/frontend-common-core/models';
+import * as React from 'react';
 
 import { EndpointSection } from './endpoint-section';
 

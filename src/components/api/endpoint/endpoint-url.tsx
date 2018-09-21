@@ -1,6 +1,6 @@
-import * as React from 'react';
-import { Icon } from '@streamjar/ui-react';
 import { IDocumentationEndpoint } from '@streamjar/frontend-common-core/models';
+import { Icon } from '@streamjar/ui-react';
+import * as React from 'react';
 
 export interface IEndpointUrlProps {
 	endpoint: IDocumentationEndpoint;

@@ -1,5 +1,6 @@
-import { ActionsUnion, action } from './../util/helpers';
 import { IDocumentationCategory } from '@streamjar/frontend-common-core/models';
+
+import { action, ActionsUnion } from './../util/helpers';
 
 export enum ApiDocActionTypes {
 	FETCH_DOCS_REQUEST = 'FETCH_DOCS',
