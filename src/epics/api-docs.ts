@@ -1,9 +1,10 @@
-import { IState } from './../state/index';
-import { ApiDocAction, ApiDocActionTypes } from './../actions/api-doc';
-import { Epic, ofType } from 'redux-observable';
-import { getApi } from '../util/ApiHelper';
 import { ApiDocs } from '@streamjar/frontend-common-core/models';
-import { map, switchMap, delay } from 'rxjs/operators';
+import { Epic, ofType } from 'redux-observable';
+import { delay, map, switchMap } from 'rxjs/operators';
+
+import { getApi } from '../util/ApiHelper';
+import { ApiDocAction, ApiDocActionTypes } from './../actions/api-doc';
+import { IState } from './../state/index';
 
 export const epics: Epic<ApiDocAction, ApiDocAction, IState>[] = [
 	(action$, state$) => action$.pipe(

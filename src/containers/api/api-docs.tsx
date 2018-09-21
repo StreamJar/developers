@@ -1,16 +1,16 @@
-import * as React from 'react';
 import { Button, Spinner } from '@streamjar/ui-react';
+import * as React from 'react';
 import { connect, Dispatch } from 'react-redux';
-import { IState } from '../../state';
-import { ApiDocAction } from '../../actions/api-doc';
-import ApiCategory from './api-category';
-import ApiGroupComponent from './api-group';
-import { Route, Link } from 'react-router-dom';
-import { ApiUsingApiPage } from '../../components/api/pages/using-api';
-import { ApiAuthenticationPage } from '../../components/api/pages/authentication';
-import ApiEndpoint from './api-endpoint';
+import { Link, Route } from 'react-router-dom'; \
 
+import { ApiDocAction } from '../../actions/api-doc';
+import { ApiAuthenticationPage } from '../../components/api/pages/authentication';
+import { ApiUsingApiPage } from '../../components/api/pages/using-api';
+import { IState } from '../../state';
+import ApiCategory from './api-category';
 import * as styles from './api-docs.scss';
+import ApiEndpoint from './api-endpoint';
+import ApiGroupComponent from './api-group';
 
 export interface IApiDocsProps {
 	isFetching: boolean;
@@ -41,7 +41,13 @@ class ApiDocsComponent extends React.Component<IApiDocsProps> {
 			</React.Fragment>
 		);
 
-		const loading = <h2 style={{ marginLeft: 50 }}> Loading api documentation.. </h2>;
+		const loading = (
+			<div className="layout-column layout-align-center-center" style={{ width: '100%' }}>
+				<Spinner />
+
+				<p style={{ fontWeight: 500, opacity: 0.2 }}> Fetching API Documentation </p>
+			</div>
+		);
 
 		return (
 			<div className={`${styles.apiDocs} layout-row`}>

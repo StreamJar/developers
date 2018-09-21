@@ -1,9 +1,9 @@
+import { Button } from '@streamjar/ui-react';
 import * as React from 'react';
-import { Tab, Tabs, Button } from '@streamjar/ui-react';
+import { Link, Route } from 'react-router-dom';
 
-import '../util/ApiHelper';
-import { Route, Link } from 'react-router-dom';
 import ApiDocs from '../containers/api/api-docs';
+import '../util/ApiHelper';
 
 import * as appStyles from './app.scss';
 
@@ -26,7 +26,7 @@ export class App extends React.Component {
 							</div>
 
 							<div>
-								<Button icon="vpn_key"> OAuth </Button>
+								<Link to="/oauth/clients"><Button icon="vpn_key"> OAuth </Button></Link>
 							</div>
 						</div>
 					</div>

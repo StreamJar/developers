@@ -1,9 +1,9 @@
-import * as React from 'react';
 import { IDocumentationResponse } from '@streamjar/frontend-common-core/dist/src/models/api-docs.model';
+import { Tab, Tabs } from '@streamjar/ui-react';
+import * as React from 'react';
 import ReactJson from 'react-json-view';
 
 import { EndpointSection } from './endpoint-section';
-import { Tabs, Tab } from '@streamjar/ui-react';
 
 export interface IEndpointResponsesProps {
 	responses: IDocumentationResponse[];

@@ -9,4 +9,8 @@
 	);
 
 	@include jar-theme($theme);
+
+	.anchor {
+		z-index: 10000;
+	}
 }

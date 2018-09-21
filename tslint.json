@@ -28,7 +28,6 @@
 			"parameters"
 		],
 		"promise-function-async": false,
-		"ordered-imports": false,
 		"no-non-null-assertion": false,
 		"export-name": false,
 		"no-unsafe-any": false,

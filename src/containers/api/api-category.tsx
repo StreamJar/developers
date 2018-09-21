@@ -1,10 +1,9 @@
-import * as React from 'react';
 import { Button } from '@streamjar/ui-react';
+import * as React from 'react';
 import { connect } from 'react-redux';
-import { Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { IState } from '../../state';
-
 import * as docStyles from './api-docs.scss';
 
 export interface IApiCategoryOwnProps {
