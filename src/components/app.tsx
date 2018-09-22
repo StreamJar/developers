@@ -1,4 +1,4 @@
-import { Button } from '@streamjar/ui-react';
+import { Button, Tooltip } from '@streamjar/ui-react';
 import * as React from 'react';
 import { Link, Route } from 'react-router-dom';
 
@@ -19,10 +19,15 @@ export class App extends React.Component {
 
 					<div className={appStyles.header__navigation}>
 						<div className="layout-row">
-							<div className="flex">
+							<div className="flex layout-row">
 								<Button> Home </Button>
 								<Link to="/api/about"><Button> API </Button></Link>
 								<Button> Live Events </Button>
+								<a href="https://github.com/streamjar/developers">
+									<Tooltip message="Contribute to the developer site" position="top">
+										<Button icon="code"> Source </Button>
+									</Tooltip>
+								</a>
 							</div>
 
 							<div>
