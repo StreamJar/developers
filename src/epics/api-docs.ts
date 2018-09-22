@@ -1,6 +1,6 @@
 import { ApiDocs } from '@streamjar/frontend-common-core/models';
 import { Epic, ofType } from 'redux-observable';
-import { delay, map, switchMap } from 'rxjs/operators';
+import {  map, switchMap } from 'rxjs/operators';
 
 import { getApi } from '../util/ApiHelper';
 import { ApiDocAction, ApiDocActionTypes } from './../actions/api-doc';

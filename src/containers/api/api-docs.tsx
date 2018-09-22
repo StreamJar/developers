@@ -4,7 +4,6 @@ import { connect, Dispatch } from 'react-redux';
 import { Link, Route } from 'react-router-dom';
 
 import { ApiDocAction } from '../../actions/api-doc';
-import { ApiAuthenticationPage } from '../../components/api/pages/authentication';
 import { ApiUsingApiPage } from '../../components/api/pages/using-api';
 import { IState } from '../../state';
 import ApiCategory from './api-category';
@@ -31,7 +30,6 @@ class ApiDocsComponent extends React.Component<IApiDocsProps> {
 			<React.Fragment>
 				<section className={`${styles.apiDocs__page} flex-50`}>
 					<Route path="/api/about" component={ApiUsingApiPage} />
-					<Route path="/api/authentication" component={ApiAuthenticationPage} />
 					<Route path="/api/:category/:group" component={ApiGroupComponent} />
 				</section>
 
@@ -54,7 +52,6 @@ class ApiDocsComponent extends React.Component<IApiDocsProps> {
 				<aside className={`${styles.apiDocs__content} flex-20`}>
 					<h5 className={styles.apiDocs__title}> About </h5>
 					<Link to="/api/about"><Button> Using our api </Button></Link>
-					<Link to="/api/authentication"><Button> Authentication </Button></Link>
 
 					{categories.map(c => <ApiCategory key={c} categoryName={c} />)}
 				</aside>
