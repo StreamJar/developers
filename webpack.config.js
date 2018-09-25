@@ -3,7 +3,7 @@
 const glob = require('glob');
 const path = require('path');
 const { CheckerPlugin } = require('awesome-typescript-loader');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const { join } = require('path');
@@ -86,6 +86,10 @@ module.exports = {
 		],
 	},
 	plugins: [
+		new webpack.ContextReplacementPlugin(
+			/highlight\.js\/lib\/languages$/,
+			new RegExp(`^./(typescript)$`),
+		),
 		new CheckerPlugin(),
 		new HtmlWebpackPlugin({
 			template: join('src', 'index.html'),

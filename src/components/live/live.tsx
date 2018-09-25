@@ -1,8 +1,9 @@
 import { Button } from '@streamjar/ui-react';
 import * as React from 'react';
-import Highlight from 'react-highlight';
 import ReactJson from 'react-json-view';
 import { Link } from 'react-router-dom';
+// tslint:disable-next-line
+const Highlight = require('react-highlight/lib/optimized'); // @ts-ignore: Optimisation!
 
 import * as stylesApi from '../../containers/api/api-docs.scss';
 import * as stylesOAuth from '../oauth/oauth-documentation.scss';
@@ -148,7 +149,7 @@ export class LiveEvents extends React.PureComponent {
 
 							<p> Connecting to our websocket is super easy if you use javascript with the socket.io library. You should ensure you force socket.io
 								to use websockets, else you may run into unexpected issues! </p>
-							<Highlight className="typescript">
+							<Highlight className="typescript" languages={['typescript']}>
 								{code.trim()}
 							</Highlight>
 						</div>
@@ -158,7 +159,7 @@ export class LiveEvents extends React.PureComponent {
 
 							<p> Once connected to our websocket, you need to subscribe to some events! This can be done as follows: </p>
 
-							<Highlight className="typescript">
+							<Highlight className="typescript" languages={['typescript']}>
 								{codeConnected.trim()}
 							</Highlight>
 						</div>
