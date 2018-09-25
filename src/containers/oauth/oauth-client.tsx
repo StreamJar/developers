@@ -24,19 +24,16 @@ class OAuthClientComponent extends React.PureComponent<IOAuthClientProps, IOAuth
 	constructor(props: IOAuthClientProps) {
 		super(props);
 
-		this.openDialog = this.openDialog.bind(this);
-		this.closeDialog = this.closeDialog.bind(this);
-
 		this.state = { open: false };
 	}
 
-	public openDialog(): void {
+	public openDialog = (): void => {
 		this.setState({
 			open: true,
 		});
 	}
 
-	public closeDialog(): void {
+	public closeDialog = (): void => {
 		this.setState({
 			open: false,
 		});

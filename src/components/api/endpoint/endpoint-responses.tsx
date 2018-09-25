@@ -19,8 +19,6 @@ export class EndpointResponses extends React.PureComponent<IEndpointResponsesPro
 	constructor(props: IEndpointResponsesProps) {
 		super(props);
 
-		this.selectTab = this.selectTab.bind(this);
-
 		this.state = { currentTab: this.props.responses[0].statusCode };
 	}
 
@@ -30,7 +28,7 @@ export class EndpointResponses extends React.PureComponent<IEndpointResponsesPro
 		}
 	}
 
-	public selectTab(value: number): void {
+	public selectTab = (value: number): void => {
 		this.setState({
 			currentTab: value,
 		});

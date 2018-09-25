@@ -42,7 +42,6 @@ class ModifyOAuthClientComponent extends BaseDialog<IModifyOAuthClientProps, IMo
 	constructor(props: IModifyOAuthClientProps & IDialogProps) {
 		super(props);
 
-		this.submit = this.submit.bind(this);
 		this.setName = this.setField.bind(this, 'name');
 		this.setWebsite = this.setField.bind(this, 'website');
 		this.setRedirect = this.setField.bind(this, 'redirect');
@@ -99,7 +98,7 @@ class ModifyOAuthClientComponent extends BaseDialog<IModifyOAuthClientProps, IMo
 		);
 	}
 
-	private submit(): void {
+	private submit = (): void => {
 		if (this.props.client) {
 			const app = {
 				...this.props.client,
