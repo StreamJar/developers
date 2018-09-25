@@ -17,14 +17,14 @@ export const epics: Epic<OAuthAction, OAuthAction, IState>[] = [
 	action$ => action$.pipe(
 		ofType<OAuthAction, ReturnType<typeof OAuthAction.createClientRequest>>(OAuthActionTypes.CREATE_CLIENT_REQUEST),
 		switchMap((action) => getApi(OAuthApplication).create(action.payload.app)),
-		tap(() => toasts.success('OAuth Application created')),
+		tap(() => { toasts.success('OAuth Application created'); }),
 		map(value => OAuthAction.createClientSuccess(value)),
 	),
 
 	action$ => action$.pipe(
 		ofType<OAuthAction, ReturnType<typeof OAuthAction.modifyClientRequest>>(OAuthActionTypes.UPDATE_CLIENT_REQUEST),
 		switchMap((action) => getApi(OAuthApplication).update(action.payload.app, action.payload.app)),
-		tap((app) => toasts.success(`OAuth Application ${app.name} updated`)),
+		tap((app) => { toasts.success(`OAuth Application ${app.name} updated`); }),
 		map(value => OAuthAction.modifyClientSuccess(value)),
 	),
 
@@ -33,7 +33,7 @@ export const epics: Epic<OAuthAction, OAuthAction, IState>[] = [
 		switchMap((action) => {
 			return getApi(OAuthApplication).delete(action.payload.app)
 				.pipe(
-					tap(() => toasts.success(`OAuth Application ${action.payload.app.name} deleted`)),
+					tap(() => { toasts.success(`OAuth Application ${action.payload.app.name} deleted`); }),
 					map(() => OAuthAction.deleteClientSuccess(action.payload.app.client!)),
 				);
 		}),

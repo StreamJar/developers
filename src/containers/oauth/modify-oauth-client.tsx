@@ -147,7 +147,7 @@ class ModifyOAuthClientComponent extends BaseDialog<IModifyOAuthClientProps, IMo
 
 function mapStateToProps(state: IState, props: IModifyOAuthClientBaseProps): Partial<IModifyOAuthClientProps> {
 	return {
-		saving: state.oauth.status[props.client ? props.client!.client! : 'newClient']!.saving,
+		saving: state.oauth.status[props.client ? props.client.client! : 'newClient'].saving,
 	};
 }
 

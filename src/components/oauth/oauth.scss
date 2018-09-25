@@ -10,5 +10,6 @@
 
 .oauthContainer {
 	height: calc(100vh - 118px);
-    overflow-y: scroll;
+	overflow-y: scroll;
+	transform: translateZ(0);
 }

@@ -4,6 +4,7 @@
 	&__page, &__endpoint {
 		height: calc(100vh - 160px);
 		overflow-y: auto;
+		transform: translateZ(0);
 		overflow-x: hidden;
 	}
 
@@ -35,6 +36,7 @@
 		background: #272727;
 		padding: 20px;
 		overflow-y: auto;
+		transform: translateZ(0);
 		overflow-x: hidden;
 		border-radius: 4px;
 
