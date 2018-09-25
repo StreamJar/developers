@@ -3,6 +3,8 @@
 	@import '~@streamjar/ui-shared/styles/components/ripple/ripple';
 	@import '~@streamjar/ui-shared/styles/theme';
 
+	@import "~highlight.js/styles/atom-one-dark.css";
+
 	$theme: (
 		gradient: linear-gradient(to bottom right, #693194 0%, #633884 100%),
 		primary: #643688,
@@ -12,5 +14,18 @@
 
 	.anchor {
 		z-index: 10000;
+	}
+
+	.hljs {
+		border-top-left-radius: 0;
+		border-top-right-radius: 0;
+		margin-top: 15px;
+		color: #e1d5ea;
+		line-height: 1.8;
+		border: none;
+		font-family: monospace;
+		font-size: 14px;
+		background-color: #232323;
+		padding: 15px;
 	}
 }
