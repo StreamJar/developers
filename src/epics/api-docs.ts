@@ -7,8 +7,8 @@ import { ApiDocAction, ApiDocActionTypes } from './../actions/api-doc';
 import { IState } from './../state/index';
 
 export const epics: Epic<ApiDocAction, ApiDocAction, IState>[] = [
-	(action$, state$) => action$.pipe(
-		ofType(ApiDocActionTypes.FETCH_DOCS_REQUEST),
+	action$ => action$.pipe(
+		ofType<ApiDocAction, ReturnType<typeof ApiDocAction.fetchDocsRequest>>(ApiDocActionTypes.FETCH_DOCS_REQUEST),
 		switchMap(() => getApi(ApiDocs).getDocumentation()),
 		map(value => ApiDocAction.fetchDocsSuccess(value)),
 	),
