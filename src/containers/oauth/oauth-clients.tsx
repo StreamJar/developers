@@ -1,7 +1,8 @@
 import { IOAuthApplication } from '@streamjar/frontend-common-core/models';
 import { Button, Section, Spinner } from '@streamjar/ui-react';
 import * as React from 'react';
-import { connect, Dispatch } from 'react-redux';
+import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
 
 import { OAuthAction } from '../../actions/oauth';
 import { IState } from '../../state';
@@ -11,6 +12,9 @@ import OAuthClient from './oauth-client';
 export interface IOAuthProps {
 	isFetching: boolean;
 	clients: IOAuthApplication[];
+}
+
+export interface IOAuthDispatchProps {
 	getClients(): void;
 }
 
@@ -18,8 +22,10 @@ export interface IOAuthState {
 	open: boolean;
 }
 
-class OAuthClientsComponent extends React.PureComponent<IOAuthProps, IOAuthState> {
-	constructor(props: IOAuthProps) {
+export type OAuthProps = IOAuthProps & IOAuthDispatchProps;
+
+class OAuthClientsComponent extends React.PureComponent<OAuthProps, IOAuthState> {
+	constructor(props: OAuthProps) {
 		super(props);
 
 		this.state = { open: false };
@@ -59,14 +65,14 @@ class OAuthClientsComponent extends React.PureComponent<IOAuthProps, IOAuthState
 	}
 }
 
-function mapStateToProps(state: IState, props: {}): Partial<IOAuthProps> {
+function mapStateToProps(state: IState, props: {}): IOAuthProps {
 	return {
 		isFetching: state.oauth.isFetching,
 		clients: state.oauth.clients,
 	};
 }
 
-function mapDispatchToProps(dispatch: Dispatch, props: {}): Partial<IOAuthProps> {
+function mapDispatchToProps(dispatch: Dispatch, props: {}): IOAuthDispatchProps {
 	return {
 		getClients() {
 			return dispatch(OAuthAction.fetchClientsRequest());

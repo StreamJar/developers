@@ -1,27 +1,33 @@
 import { IOAuthApplication } from '@streamjar/frontend-common-core/models';
 import { Button, Card, CardActions, CardContent } from '@streamjar/ui-react';
 import * as React from 'react';
-import { connect, Dispatch } from 'react-redux';
+import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
 
 import { OAuthAction } from '../../actions/oauth';
 import { IState } from '../../state';
 import ModifyOAuthClient from './modify-oauth-client';
 
-export interface IOAuthClientBaseProps {
+export interface IOAuthClientOwnProps {
 	client: IOAuthApplication;
 }
 
-export interface IOAuthClientProps extends IOAuthClientBaseProps {
-	saving: boolean;
+export interface IOAuthClientDispatchProps {
 	delete(): void;
+}
+
+export interface IOAuthClientProps {
+	saving: boolean;
 }
 
 export interface IOAuthClientState {
 	open: boolean;
 }
 
-class OAuthClientComponent extends React.PureComponent<IOAuthClientProps, IOAuthClientState> {
-	constructor(props: IOAuthClientProps) {
+export type OAuthClientProps = IOAuthClientProps & IOAuthClientDispatchProps & IOAuthClientOwnProps;
+
+class OAuthClientComponent extends React.PureComponent<OAuthClientProps, IOAuthClientState> {
+	constructor(props: OAuthClientProps) {
 		super(props);
 
 		this.state = { open: false };
@@ -62,13 +68,13 @@ class OAuthClientComponent extends React.PureComponent<IOAuthClientProps, IOAuth
 	}
 }
 
-function mapStateToProps(state: IState, props: IOAuthClientBaseProps): Partial<IOAuthClientProps> {
+function mapStateToProps(state: IState, props: IOAuthClientOwnProps): IOAuthClientProps {
 	return {
 		saving: state.oauth.status[props.client.client!].saving,
 	};
 }
 
-function mapDispatchToProps(dispatch: Dispatch, props: IOAuthClientBaseProps): Partial<IOAuthClientProps> {
+function mapDispatchToProps(dispatch: Dispatch, props: IOAuthClientOwnProps): IOAuthClientDispatchProps {
 	return {
 		delete() {
 			return dispatch(OAuthAction.deleteClientRequest(props.client));

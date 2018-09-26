@@ -3,7 +3,7 @@ import * as React from 'react';
 import ReactJson from 'react-json-view';
 import { Link } from 'react-router-dom';
 // tslint:disable-next-line
-const Highlight = require('react-highlight/lib/optimized'); // @ts-ignore: Optimisation!
+const Highlight = require('react-highlight/lib/optimized').default; // @ts-ignore: Optimisation!
 
 import * as stylesApi from '../../containers/api/api-docs.scss';
 import * as stylesOAuth from '../oauth/oauth-documentation.scss';

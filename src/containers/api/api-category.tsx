@@ -10,11 +10,13 @@ export interface IApiCategoryOwnProps {
 	categoryName: string;
 }
 
-export interface IApiCategoryProps extends IApiCategoryOwnProps {
+export interface IApiCategoryProps {
 	category: { name: string; groups: string[] };
 }
 
-class ApiCategoryComponent extends React.Component<IApiCategoryProps> {
+export type ApiCategory = IApiCategoryOwnProps & IApiCategoryProps;
+
+class ApiCategoryComponent extends React.Component<ApiCategory> {
 	public render() {
 		const { categoryName, category } = this.props;
 
@@ -27,7 +29,7 @@ class ApiCategoryComponent extends React.Component<IApiCategoryProps> {
 	}
 }
 
-function mapStateToProps(state: IState, props: IApiCategoryOwnProps): Partial<IApiCategoryProps> {
+function mapStateToProps(state: IState, props: IApiCategoryOwnProps): IApiCategoryProps {
 	return {
 		category: state.apiDocs.entities.categories[props.categoryName],
 	};

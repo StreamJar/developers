@@ -1,7 +1,8 @@
 import { Button, Spinner } from '@streamjar/ui-react';
 import * as React from 'react';
-import { connect, Dispatch } from 'react-redux';
+import { connect } from 'react-redux';
 import { Link, Route } from 'react-router-dom';
+import { bindActionCreators, Dispatch } from 'redux';
 
 import { ApiDocAction } from '../../actions/api-doc';
 import { ApiUsingApiPage } from '../../components/api/pages/using-api';
@@ -11,14 +12,22 @@ import * as styles from './api-docs.scss';
 import ApiEndpoint from './api-endpoint';
 import ApiGroupComponent from './api-group';
 
-export interface IApiDocsProps {
-	isFetching: boolean;
-	categories: string[];
-
+export interface IApiDocsDispatchProps {
 	getApiDocs(): void;
 }
 
-class ApiDocsComponent extends React.Component<IApiDocsProps> {
+export interface IApiDocsProps {
+	isFetching: boolean;
+	categories: string[];
+}
+
+export interface IApiDocsOwnProps {
+	thing: string;
+}
+
+export type ApiDocsProps = IApiDocsOwnProps & IApiDocsDispatchProps & IApiDocsProps;
+
+class ApiDocsComponent extends React.Component<ApiDocsProps> {
 	public componentDidMount() {
 		this.props.getApiDocs();
 	}
@@ -62,14 +71,14 @@ class ApiDocsComponent extends React.Component<IApiDocsProps> {
 	}
 }
 
-function mapStateToProps(state: IState, props: {}): Partial<IApiDocsProps> {
+function mapStateToProps(state: IState, props: IApiDocsOwnProps): IApiDocsProps {
 	return {
 		isFetching: state.apiDocs.isFetching,
 		categories: state.apiDocs.result,
 	};
 }
 
-function mapDispatchToProps(dispatch: Dispatch, props: {}): Partial<IApiDocsProps> {
+function mapDispatchToProps(dispatch: Dispatch, props: IApiDocsOwnProps): IApiDocsDispatchProps {
 	return {
 		getApiDocs() {
 			return dispatch(ApiDocAction.fetchDocsRequest());

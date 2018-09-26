@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { IState } from '../../state';
+import * as styles from './api-group.scss';
 
 export interface IApiGroupOwnProps {
 	match: {
@@ -16,15 +17,15 @@ export interface IApiGroupOwnProps {
 	};
 }
 
-export interface IApiGroupProps extends IApiGroupOwnProps {
+export interface IApiGroupProps {
 	category: { name: string; groups: string[] };
 	group: { name: string; endpoints: string[] };
 	endpoints: IDocumentationEndpoint[];
 }
 
-import * as styles from './api-group.scss';
+export type ApiGroupProps = IApiGroupProps & IApiGroupOwnProps;
 
-class ApiGroupComponent extends React.Component<IApiGroupProps> {
+class ApiGroupComponent extends React.Component<ApiGroupProps> {
 	public render() {
 		const { category, group } = this.props;
 
@@ -47,7 +48,7 @@ class ApiGroupComponent extends React.Component<IApiGroupProps> {
 	}
 }
 
-function mapStateToProps(state: IState, props: IApiGroupOwnProps): Partial<IApiGroupProps> {
+function mapStateToProps(state: IState, props: IApiGroupOwnProps): IApiGroupProps {
 	if (!state.apiDocs.entities.groups[props.match.params.group]) {
 		return {
 			endpoints: [],

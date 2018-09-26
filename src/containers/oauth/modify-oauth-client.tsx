@@ -2,18 +2,22 @@ import { IOAuthApplication } from '@streamjar/frontend-common-core/models';
 import { BaseDialog, Button, Checkbox, DialogContent, DialogFooter, DialogHeader, DialogStatus, Form, Input } from '@streamjar/ui-react';
 import { IDialogProps } from '@streamjar/ui-react/dist/lib/dialog/dialog';
 import * as React from 'react';
-import { connect, Dispatch } from 'react-redux';
+import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
 import * as yup from 'yup';
 
 import { OAuthAction } from '../../actions/oauth';
 import { IState } from '../../state';
 
-export interface IModifyOAuthClientBaseProps {
+export interface IModifyOAuthClientOwnProps {
 	client?: IOAuthApplication;
 }
 
-export interface IModifyOAuthClientProps extends IModifyOAuthClientBaseProps {
+export interface IModifyOAuthClientProps {
 	saving: boolean;
+}
+
+export interface IModifyOAuthClientDispatchProps {
 	createClient(app: IOAuthApplication): void;
 	saveClient(app: IOAuthApplication): void;
 }
@@ -25,7 +29,9 @@ export interface IModifyOAuthClientState {
 	secret: boolean;
 }
 
-class ModifyOAuthClientComponent extends BaseDialog<IModifyOAuthClientProps, IModifyOAuthClientState> {
+export type ModifyOauthClientProps = IModifyOAuthClientDispatchProps & IModifyOAuthClientOwnProps & IModifyOAuthClientProps;
+
+class ModifyOAuthClientComponent extends BaseDialog<ModifyOauthClientProps & IDialogProps, IModifyOAuthClientState> {
 	public validation = yup.object().shape({
 		name: yup.string().required().min(4).max(24),
 		website: yup.string().required().matches(/^(https?:\/\/)(.+)/, 'This must be a fully formed URL (e.g https://streamjar.tv)'),
@@ -39,7 +45,7 @@ class ModifyOAuthClientComponent extends BaseDialog<IModifyOAuthClientProps, IMo
 	private setRedirect: (val: string) => void;
 	private setSecret: (val: boolean) => void;
 
-	constructor(props: IModifyOAuthClientProps & IDialogProps) {
+	constructor(props: ModifyOauthClientProps & IDialogProps) {
 		super(props);
 
 		this.setName = this.setField.bind(this, 'name');
@@ -145,13 +151,13 @@ class ModifyOAuthClientComponent extends BaseDialog<IModifyOAuthClientProps, IMo
 	}
 }
 
-function mapStateToProps(state: IState, props: IModifyOAuthClientBaseProps): Partial<IModifyOAuthClientProps> {
+function mapStateToProps(state: IState, props: IModifyOAuthClientOwnProps): IModifyOAuthClientProps {
 	return {
 		saving: state.oauth.status[props.client ? props.client.client! : 'newClient'].saving,
 	};
 }
 
-function mapDispatchToProps(dispatch: Dispatch, props: IModifyOAuthClientBaseProps): Partial<IModifyOAuthClientProps> {
+function mapDispatchToProps(dispatch: Dispatch, props: IModifyOAuthClientOwnProps): IModifyOAuthClientDispatchProps {
 	return {
 		createClient(app: IOAuthApplication) {
 			return dispatch(OAuthAction.createClientRequest(app));

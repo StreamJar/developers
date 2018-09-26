@@ -17,11 +17,13 @@ export interface IApiEndpointOwnProps {
 	};
 }
 
-export interface IApiEndpointProps extends IApiEndpointOwnProps {
+export interface IApiEndpointProps {
 	endpoint: IDocumentationEndpoint | null;
 }
 
-class ApiEndpointComponent extends React.Component<IApiEndpointProps> {
+export type ApiEndpointProps = IApiEndpointOwnProps & IApiEndpointProps;
+
+class ApiEndpointComponent extends React.Component<ApiEndpointProps> {
 	public render() {
 		const { endpoint } = this.props;
 
@@ -44,7 +46,7 @@ class ApiEndpointComponent extends React.Component<IApiEndpointProps> {
 	}
 }
 
-function mapStateToProps(state: IState, props: IApiEndpointOwnProps): Partial<IApiEndpointProps> {
+function mapStateToProps(state: IState, props: IApiEndpointOwnProps): IApiEndpointProps {
 	return {
 		endpoint: state.apiDocs.entities.endpoints[props.match.params.endpoint],
 	};
