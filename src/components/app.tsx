@@ -39,13 +39,15 @@ export class App extends React.Component {
 					</div>
 				</header>
 
-				<Switch>
-					<Route exact={true} path="/" render={this.redirectToApi} />
-					<Route path="/api" component={ApiDocs} />
-					<Route path="/live" component={LiveEvents} />
-					<Route path="/oauth" component={OAuth} />
-					<Route render={this.redirectToApi}></Route>
-				</Switch>
+				<div className="flex layout-row" style={{ height: '100%'}}>
+					<Switch>
+						<Route exact={true} path="/" render={this.redirectToApi} />
+						<Route path="/api" component={ApiDocs} />
+						<Route path="/live" component={LiveEvents} />
+						<Route path="/oauth" component={OAuth} />
+						<Route render={this.redirectToApi}></Route>
+					</Switch>
+				</div>
 			</React.Fragment>
 		);
 	}

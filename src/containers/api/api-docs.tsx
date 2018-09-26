@@ -2,15 +2,17 @@ import { Button, Spinner } from '@streamjar/ui-react';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Link, Route } from 'react-router-dom';
-import { bindActionCreators, Dispatch } from 'redux';
+import { Dispatch } from 'redux';
 
 import { ApiDocAction } from '../../actions/api-doc';
 import { ApiUsingApiPage } from '../../components/api/pages/using-api';
 import { IState } from '../../state';
 import ApiCategory from './api-category';
-import * as styles from './api-docs.scss';
 import ApiEndpoint from './api-endpoint';
 import ApiGroupComponent from './api-group';
+
+import * as sidebarStyles from '../../components/sidebar.scss';
+// import * as styles from './api-docs.scss';
 
 export interface IApiDocsDispatchProps {
 	getApiDocs(): void;
@@ -37,12 +39,12 @@ class ApiDocsComponent extends React.Component<ApiDocsProps> {
 
 		const ui = (
 			<React.Fragment>
-				<section className={`${styles.apiDocs__page} flex-50`}>
+				<section className={`flex-50 ${sidebarStyles.centerPanel}`}>
 					<Route path="/api/about" component={ApiUsingApiPage} />
 					<Route path="/api/:category/:group" component={ApiGroupComponent} />
 				</section>
 
-				<section className={`${styles.apiDocs__endpoint} flex-30 layout-column layout-align-center-center`}>
+				<section className={`flex-30 layout-column layout-align-center-center ${sidebarStyles.sidebar}`} style={{ padding: 0 }}>
 					<Route path="/api/:category/:group/:endpoint?" component={ApiEndpoint} />
 				</section>
 			</React.Fragment>
@@ -57,16 +59,16 @@ class ApiDocsComponent extends React.Component<ApiDocsProps> {
 		);
 
 		return (
-			<div className={`${styles.apiDocs} layout-row`}>
-				<aside className={`${styles.apiDocs__content} flex-20`}>
-					<h5 className={styles.apiDocs__title}> About </h5>
+			<React.Fragment>
+				<aside className={`${sidebarStyles.sidebar} flex-20`}>
+					<h5 className={sidebarStyles.sidebar__title}> About </h5>
 					<Link to="/api/about"><Button> Using our api </Button></Link>
 
 					{categories.map(c => <ApiCategory key={c} categoryName={c} />)}
 				</aside>
 
 				{this.props.isFetching ? loading : ui}
-			</div>
+			</React.Fragment>
 		);
 	}
 }

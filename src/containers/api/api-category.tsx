@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { IState } from '../../state';
-import * as docStyles from './api-docs.scss';
+
+import * as sidebarStyles from '../../components/sidebar.scss';
 
 export interface IApiCategoryOwnProps {
 	categoryName: string;
@@ -22,7 +23,7 @@ class ApiCategoryComponent extends React.Component<ApiCategory> {
 
 		return (
 			<React.Fragment>
-				<h5 className={docStyles.apiDocs__title}> {categoryName} </h5>
+				<h5 className={sidebarStyles.sidebar__title}> {categoryName} </h5>
 				{category.groups.map(i => <Link key={i} to={`/api/${categoryName}/${i}`}><Button>{i}</Button></Link>)}
 			</React.Fragment>
 		);

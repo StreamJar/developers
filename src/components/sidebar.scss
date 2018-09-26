@@ -1,0 +1,55 @@
+.sidebar {
+	margin: 20px;
+	height: calc(100% - 40px);
+	background: #272727;
+	padding: 20px;
+	overflow-y: auto;
+	transform: translateZ(0);
+	overflow-x: hidden;
+	border-radius: 4px;
+
+	:global {
+		.jarBtn {
+			margin: 0px;
+			width: 100%;
+
+			border-left: 1px solid rgba(#FFF, .1);
+
+			.jar-button {
+				margin-left: 5px;
+				place-content: center flex-start;
+				align-items: flex-start;
+				border-radius: none;
+			}
+		}
+	}
+
+	&__title {
+		&:first-child {
+			margin-top: 0;
+		}
+
+		border-left: 1px solid rgba(#FFF, .1);
+		margin-top: 30px;
+		padding-left: 15px;
+		padding-bottom: 10px;
+	}
+}
+
+.rightPanel, .centerPanel {
+	height: 100%;
+	overflow-y: scroll;
+	transform: translateZ(0);
+}
+
+.centerPanel {
+	margin: 20px 0;
+	height: calc(100% - 40px);
+
+	:global {
+		.jar-section {
+			margin: 0;
+			padding: 0;
+		}
+	}
+}

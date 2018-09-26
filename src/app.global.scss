@@ -12,6 +12,10 @@
 
 	@include jar-theme($theme);
 
+	#app {
+		height: 100vh;
+	}
+
 	.anchor {
 		z-index: 10000;
 	}

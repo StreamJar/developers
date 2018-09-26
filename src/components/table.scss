@@ -1,0 +1,26 @@
+.quickTable {
+	width: 100%;
+	color: #FFF;
+	margin: 20px 0px;
+	background: transparent;
+	transition: all 200ms ease-in-out;
+
+	tr:hover td {
+		background: rgba(#FFF, .01);
+	}
+
+	.monospace {
+		font-family: monospace !important;
+		font-size: 1.1em;
+	}
+
+	.admin td {
+		color: #ffaaaa;
+	}
+
+	td {
+		padding: 10px 5px;
+		border-top: 1px solid rgba(#FFF, .1);
+		border-bottom: 1px solid rgba(#FFF, .1);
+	}
+}

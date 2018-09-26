@@ -5,8 +5,9 @@ import { Link } from 'react-router-dom';
 // tslint:disable-next-line
 const Highlight = require('react-highlight/lib/optimized').default; // @ts-ignore: Optimisation!
 
-import * as stylesApi from '../../containers/api/api-docs.scss';
-import * as stylesOAuth from '../oauth/oauth-documentation.scss';
+import * as blockStyles from '../block.scss';
+import * as sidebarStyles from '../sidebar.scss';
+import * as tableStyles from '../table.scss';
 import * as styles from './live.scss';
 
 const events: { [key: string]: any } = {
@@ -108,65 +109,63 @@ export class LiveEvents extends React.PureComponent {
 	public render(): JSX.Element {
 		return (
 			<React.Fragment>
-				<div className={`layout-row`}>
-					<aside className={`${styles.leftPanel} ${stylesApi.apiDocs__content} ${styles.oauth} flex-20`}>
-						<h5 className={stylesApi.apiDocs__title}> Live Events </h5>
-						<a href="/live#quick"><Button> About </Button></a>
-						<a href="/live#ex-conn"><Button> Connecting </Button></a>
-						<a href="/live#ex-evts"><Button> Subscribing to events </Button></a>
-						<h5 className={stylesApi.apiDocs__title}> Available Events </h5>
-						{Object.keys(events).map(key => <a key={key} href={`/live#evt-${key}`}><Button> {key} </Button></a>)}
-					</aside>
+				<aside className={`${sidebarStyles.sidebar} flex-20`}>
+					<h5 className={sidebarStyles.sidebar__title}> Live Events </h5>
+					<a href="/live#quick"><Button> About </Button></a>
+					<a href="/live#ex-conn"><Button> Connecting </Button></a>
+					<a href="/live#ex-evts"><Button> Subscribing to events </Button></a>
+					<h5 className={sidebarStyles.sidebar__title}> Available Events </h5>
+					{Object.keys(events).map(key => <a key={key} href={`/live#evt-${key}`}><Button> {key} </Button></a>)}
+				</aside>
 
-					<section className={`${styles.rightPanel} flex-80`}>
-						<div className={styles.block} id="quick">
-							<p className={styles.block__title}> Quick Information </p>
-							<p> We provide a websocket service which utilizes socket.io, which allows you to receive any events we emit in real time.
-								Below you can find a list of all events you can subscribe to and an example payload you should expect to receive. </p>
+				<section className={`${sidebarStyles.centerPanel} flex-80`}>
+					<div className={blockStyles.block} id="quick">
+						<p className={blockStyles.block__title}> Quick Information </p>
+						<p> We provide a websocket service which utilizes socket.io, which allows you to receive any events we emit in real time.
+							Below you can find a list of all events you can subscribe to and an example payload you should expect to receive. </p>
 
-							<table className={stylesOAuth.quickTable}>
-								<tbody>
-									<tr>
-										<td> Hostname </td>
-										<td> https://jar.streamjar.tv </td>
-									</tr>
-									<tr>
-										<td> Authentication </td>
-										<td> Emit an event <code>authenticate</code> with payload <code>{'{ oauth: \'token\'}'}</code>. The authentication
-											token is the one you obtained from the OAuth flow. </td>
-									</tr>
-									<tr>
-										<td> Subscribe </td>
-										<td> Emit an event <code>subscribe</code> with payload <code>{'{ event: \'channel:1:tip\'}'}</code>, where
-											<code>1</code> is the <strong>channelId</strong>.</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
+						<table className={tableStyles.quickTable}>
+							<tbody>
+								<tr>
+									<td> Hostname </td>
+									<td> https://jar.streamjar.tv </td>
+								</tr>
+								<tr>
+									<td> Authentication </td>
+									<td> Emit an event <code>authenticate</code> with payload <code>{'{ oauth: \'token\'}'}</code>. The authentication
+										token is the one you obtained from the OAuth flow. </td>
+								</tr>
+								<tr>
+									<td> Subscribe </td>
+									<td> Emit an event <code>subscribe</code> with payload <code>{'{ event: \'channel:1:tip\'}'}</code>, where
+										<code>1</code> is the <strong>channelId</strong>.</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 
-						<div className={`${styles.block} ${styles.codeBlock}`} id="ex-conn">
-							<p className={`${styles.block__title}`}> Connection Example </p>
+					<div className={`${blockStyles.block} ${styles.codeBlock}`} id="ex-conn">
+						<p className={`${blockStyles.block__title}`}> Connection Example </p>
 
-							<p> Connecting to our websocket is super easy if you use javascript with the socket.io library. You should ensure you force socket.io
-								to use websockets, else you may run into unexpected issues! </p>
-							<Highlight className="typescript" languages={['typescript']}>
-								{code.trim()}
-							</Highlight>
-						</div>
+						<p> Connecting to our websocket is super easy if you use javascript with the socket.io library. You should ensure you force socket.io
+							to use websockets, else you may run into unexpected issues! </p>
+						<Highlight className="typescript" languages={['typescript']}>
+							{code.trim()}
+						</Highlight>
+					</div>
 
-						<div className={`${styles.block} ${styles.codeBlock}`} id="ex-evts">
-							<p className={`${styles.block__title}`}> Subscribing to events</p>
+					<div className={`${blockStyles.block} ${styles.codeBlock}`} id="ex-evts">
+						<p className={`${blockStyles.block__title}`}> Subscribing to events</p>
 
-							<p> Once connected to our websocket, you need to subscribe to some events! This can be done as follows: </p>
+						<p> Once connected to our websocket, you need to subscribe to some events! This can be done as follows: </p>
 
-							<Highlight className="typescript" languages={['typescript']}>
-								{codeConnected.trim()}
-							</Highlight>
-						</div>
+						<Highlight className="typescript" languages={['typescript']}>
+							{codeConnected.trim()}
+						</Highlight>
+					</div>
 
-						{this.getEvents()}
-					</section>
-				</div>
+					{this.getEvents()}
+				</section>
 			</React.Fragment>
 		);
 	}
@@ -174,8 +173,8 @@ export class LiveEvents extends React.PureComponent {
 	private getEvents() {
 		return Object.keys(events).map(i => {
 			return (
-				<div key={i} className={styles.block} id={`evt-${i}`}>
-					<p className={`${styles.block__title} ${styles.block__lower}`}> channel:{`{id}`}:{i} </p>
+				<div key={i} className={blockStyles.block} id={`evt-${i}`}>
+					<p className={`${blockStyles.block__title} ${blockStyles.block__lower}`}> channel:{`{id}`}:{i} </p>
 					<ReactJson src={events[i]} name={null} theme="monokai" />
 				</div>
 			);

@@ -1,18 +1,19 @@
+import { Scopes } from '@streamjar/frontend-common-core';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
-import { Scopes } from '@streamjar/frontend-common-core';
-
+import * as blockStyles from '../block.scss';
+import * as tableStyles from '../table.scss';
 import * as styles from './oauth-documentation.scss';
 
 export class OAuthDocumentation extends React.PureComponent {
 	public render(): JSX.Element {
 		return (
 			<React.Fragment>
-				<div className={styles.block}>
-					<p className={styles.block__title}> Quick Information </p>
+				<div className={blockStyles.block}>
+					<p className={blockStyles.block__title}> Quick Information </p>
 
-					<table className={styles.quickTable}>
+					<table className={tableStyles.quickTable}>
 						<tbody>
 							<tr>
 								<td> access_token </td>
@@ -42,13 +43,13 @@ export class OAuthDocumentation extends React.PureComponent {
 					</table>
 				</div>
 
-				<div className={styles.block}>
-					<p className={styles.block__title}> Authentication with StreamJar </p>
+				<div className={blockStyles.block}>
+					<p className={blockStyles.block__title}> Authentication with StreamJar </p>
 					<p> If you would like to utilize our api, we recommend you use OAuth. It's quick and secure for our
 						(and your) users. At this time we scope all OAuth requests to a channel. We don't provide access
 						to viewers or account level api's at this time. </p>
 
-					<p className={styles.block__title}> Getting Started </p>
+					<p className={blockStyles.block__title}> Getting Started </p>
 					<p>To get started with OAuth, you'll want to create your first OAuth application. You can do that here! You must provide us:</p>
 					<ul className={styles.docsList}>
 						<li> An application name - This must be unique to you </li>
@@ -61,7 +62,7 @@ export class OAuthDocumentation extends React.PureComponent {
 						</li>
 					</ul>
 
-					<p className={styles.block__title}> The oauth flow </p>
+					<p className={blockStyles.block__title}> The oauth flow </p>
 					<p> The remainder is fairly standard, our API follows the OAuth specification. We strongly recommend that
 						<strong>you don't</strong> implement this yourself. Lots of clients already exist for a
 						<a href="https://oauth.net/code/"> wide range of languages</a>.
@@ -69,20 +70,20 @@ export class OAuthDocumentation extends React.PureComponent {
 
 				</div>
 
-				<div className={styles.block}>
-					<p className={styles.block__title}> Channels </p>
+				<div className={blockStyles.block}>
+					<p className={blockStyles.block__title}> Channels </p>
 					<p>Since we scope oauth authorisation to a single channel, you'll never be linked to a single StreamJar user. Please make a call to
 						our <Link to="/api/Channels/Channel%20Collection/Get%20channels">/channels endpoint</Link>. It will return a single channel which all
 						subsequent api calls will use. <strong> This will never change within the life time of an authorisation</strong>.
 					</p>
 				</div>
 
-				<div className={styles.block}>
-					<p className={styles.block__title}> Scopes </p>
+				<div className={blockStyles.block}>
+					<p className={blockStyles.block__title}> Scopes </p>
 					<p>Our endpoints have their permissions managed based on a granular range of scopes, below is a list you may request access to.
 						Note the docs for each endpoint will mention what scope is required.</p>
 
-					<table className={styles.quickTable}>
+					<table className={tableStyles.quickTable}>
 						<tbody>
 							{this.getScopes()}
 						</tbody>
@@ -100,7 +101,7 @@ export class OAuthDocumentation extends React.PureComponent {
 
 			return (
 				<tr key={key} className={classname}>
-					<td className={styles.monospace}> {key} </td>
+					<td className={tableStyles.monospace}> {key} </td>
 					<td> {scopes[key]}</td>
 				</tr>
 			);

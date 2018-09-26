@@ -1,0 +1,45 @@
+.block {
+	background: #272727;
+    border-radius: 4px;
+    padding: 25px 25px 15px;
+	margin: 20px 20px;
+
+	&:first-of-type {
+		margin-top: 0;
+	}
+
+	&:last-of-type {
+		margin-bottom: 0;
+	}
+
+	:global {
+		.react-json-view {
+			margin: 15px -25px -15px;
+			padding: 25px;
+			font-family: monospace !important;
+			margin-top: 15px;
+			position: relative !important;
+			background-color: rgb(35, 35, 35) !important;
+			padding: 15px;
+			overflow: hidden;
+		}
+	}
+
+	p {
+		line-height: 1.5;
+	}
+
+	&__lower {
+		text-transform: lowercase !important;
+	}
+
+	&__title {
+		margin: 0;
+		margin-top: 25px;
+		font-weight: bold;
+		text-transform: uppercase;
+		&:first-of-type {
+			margin-top: 0;
+		}
+	}
+}
