@@ -9,6 +9,7 @@ import * as sidebarStyles from '../../components/sidebar.scss';
 
 export interface IApiCategoryOwnProps {
 	categoryName: string;
+	onClick(): void;
 }
 
 export interface IApiCategoryProps {
@@ -24,7 +25,7 @@ class ApiCategoryComponent extends React.Component<ApiCategory> {
 		return (
 			<React.Fragment>
 				<h5 className={sidebarStyles.sidebar__title}> {categoryName} </h5>
-				{category.groups.map(i => <Link key={i} to={`/api/${categoryName}/${i}`}><Button>{i}</Button></Link>)}
+				{category.groups.map(i => <Link key={i} to={`/api/${categoryName}/${i}`}><Button onClick={this.props.onClick}>{i}</Button></Link>)}
 			</React.Fragment>
 		);
 	}

@@ -29,7 +29,23 @@ export interface IApiDocsOwnProps {
 
 export type ApiDocsProps = IApiDocsOwnProps & IApiDocsDispatchProps & IApiDocsProps;
 
-class ApiDocsComponent extends React.Component<ApiDocsProps> {
+export interface IApiDocsState {
+	sidebarVisible: boolean;
+}
+
+class ApiDocsComponent extends React.Component<ApiDocsProps, IApiDocsState> {
+	constructor(props: ApiDocsProps) {
+		super(props);
+
+		this.state = { sidebarVisible: false };
+	}
+
+	public toggleSidebar = (): void => {
+		this.setState(state => ({
+			sidebarVisible: !state.sidebarVisible,
+		}));
+	}
+
 	public componentDidMount() {
 		this.props.getApiDocs();
 	}
@@ -39,12 +55,12 @@ class ApiDocsComponent extends React.Component<ApiDocsProps> {
 
 		const ui = (
 			<React.Fragment>
-				<section className={`flex-50 ${sidebarStyles.centerPanel}`}>
+				<section className={`flex-50-md flex-50-sm ${sidebarStyles.centerPanel}`}>
 					<Route path="/api/about" component={ApiUsingApiPage} />
 					<Route path="/api/:category/:group" component={ApiGroupComponent} />
 				</section>
 
-				<section className={`flex-30 layout-column layout-align-center-center ${sidebarStyles.sidebar}`} style={{ padding: 0 }}>
+				<section className={`flex-30-sm flex-30-md layout-column layout-align-center-center ${sidebarStyles.sidebar}`} style={{ padding: 0 }}>
 					<Route path="/api/:category/:group/:endpoint?" component={ApiEndpoint} />
 				</section>
 			</React.Fragment>
@@ -60,14 +76,21 @@ class ApiDocsComponent extends React.Component<ApiDocsProps> {
 
 		return (
 			<React.Fragment>
-				<aside className={`${sidebarStyles.sidebar} flex-20`}>
-					<h5 className={sidebarStyles.sidebar__title}> About </h5>
-					<Link to="/api/about"><Button> Using our api </Button></Link>
+				<div className={`hide-sm hide-md layout-row layout-align-center-center ${sidebarStyles.sidebarBtn}`}>
+					<Button raised={true} icon="menu" onClick={this.toggleSidebar}></Button>
+				</div>
 
-					{categories.map(c => <ApiCategory key={c} categoryName={c} />)}
-				</aside>
+				<div className="flex layout-column-xs layout-row-sm layout-row-md" style={{ height: '100%'}}>
+					<aside className={`${sidebarStyles.sidebar} flex-20-md ${this.state.sidebarVisible ? 'force-show' : ''}`}>
+						<div className="hide-element-desktop"><Button round={true} raised={true} icon="close" onClick={this.toggleSidebar}></Button></div>
+						<h5 className={sidebarStyles.sidebar__title}> About </h5>
+						<Link to="/api/about"><Button onClick={this.toggleSidebar}> Using our api </Button></Link>
 
-				{this.props.isFetching ? loading : ui}
+						{categories.map(c => <ApiCategory key={c} categoryName={c} onClick={this.toggleSidebar} />)}
+					</aside>
+
+					{this.props.isFetching ? loading : ui}
+				</div>
 			</React.Fragment>
 		);
 	}

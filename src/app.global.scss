@@ -2,6 +2,7 @@
 	@import '~@streamjar/ui-shared/styles/ui';
 	@import '~@streamjar/ui-shared/styles/components/ripple/ripple';
 	@import '~@streamjar/ui-shared/styles/theme';
+	@import '~@streamjar/ui-shared/styles/flex';
 
 	@import "~highlight.js/styles/atom-one-dark.css";
 
@@ -31,5 +32,31 @@
 		font-size: 14px;
 		background-color: #232323;
 		padding: 15px;
+	}
+
+	.hide-element-desktop {
+		display: none;
+	}
+
+	@media #{map-get($breakpoints, xs)} {
+		.hide-element-desktop {
+			display: initial
+		}
+
+		aside:not(.force-show) {
+			display: none;
+		}
+
+		aside.force-show {
+			position: absolute;
+			top: 0;
+			height: 100%;
+			left: 0;
+			right: -12px;
+			bottom: 0;
+			z-index: 1000;
+			margin: 0;
+			padding: 20px;
+		}
 	}
 }

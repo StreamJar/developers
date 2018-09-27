@@ -32,7 +32,7 @@ class ApiEndpointComponent extends React.Component<ApiEndpointProps> {
 		}
 
 		return (
-			<div className={`${styles.endpoint} layout-column`}>
+			<div className={`${styles.endpoint} layout-column force-show`}>
 				<EndpointUrl endpoint={endpoint} />
 
 				<div className={`${styles.endpoint__scroller} flex`}>

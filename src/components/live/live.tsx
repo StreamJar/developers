@@ -105,20 +105,42 @@ socket.on('connect', () => {
 });
 `;
 
-export class LiveEvents extends React.PureComponent {
+export interface ILiveEventsState {
+	sidebarVisible: boolean;
+}
+
+export class LiveEvents extends React.PureComponent<{}, ILiveEventsState> {
+	constructor(props: {}) {
+		super(props);
+
+		this.state = { sidebarVisible: false };
+	}
+
+	public toggleSidebar = (): void => {
+		this.setState(state => ({
+			sidebarVisible: !state.sidebarVisible,
+		}));
+	}
+
 	public render(): JSX.Element {
 		return (
 			<React.Fragment>
-				<aside className={`${sidebarStyles.sidebar} flex-20`}>
-					<h5 className={sidebarStyles.sidebar__title}> Live Events </h5>
-					<a href="/live#quick"><Button> About </Button></a>
-					<a href="/live#ex-conn"><Button> Connecting </Button></a>
-					<a href="/live#ex-evts"><Button> Subscribing to events </Button></a>
-					<h5 className={sidebarStyles.sidebar__title}> Available Events </h5>
-					{Object.keys(events).map(key => <a key={key} href={`/live#evt-${key}`}><Button> {key} </Button></a>)}
-				</aside>
+				<div className={`hide-sm hide-md layout-row layout-align-center-center ${sidebarStyles.sidebarBtn}`}>
+					<Button raised={true} icon="menu" onClick={this.toggleSidebar}></Button>
+				</div>
 
-				<section className={`${sidebarStyles.centerPanel} flex-80`}>
+				<div className="flex layout-column-xs layout-row-sm layout-row-md" style={{ height: '100%'}}>
+					<aside className={`${sidebarStyles.sidebar} flex-20-md ${this.state.sidebarVisible ? 'force-show' : ''}`}>
+						<div className="hide-element-desktop"><Button round={true} raised={true} icon="close" onClick={this.toggleSidebar}></Button></div>
+						<h5 className={sidebarStyles.sidebar__title}> Live Events </h5>
+						<a href="/live#quick"><Button onClick={this.toggleSidebar}> About </Button></a>
+						<a href="/live#ex-conn"><Button onClick={this.toggleSidebar}> Connecting </Button></a>
+						<a href="/live#ex-evts"><Button onClick={this.toggleSidebar}> Subscribing to events </Button></a>
+						<h5 className={sidebarStyles.sidebar__title}> Available Events </h5>
+						{Object.keys(events).map(key => <a key={key} href={`/live#evt-${key}`}><Button onClick={this.toggleSidebar}> {key} </Button></a>)}
+					</aside>
+
+					<section className={`${sidebarStyles.centerPanel} flex-80-md`}>
 					<div className={blockStyles.block} id="quick">
 						<p className={blockStyles.block__title}> Quick Information </p>
 						<p> We provide a websocket service which utilizes socket.io, which allows you to receive any events we emit in real time.
@@ -166,6 +188,7 @@ export class LiveEvents extends React.PureComponent {
 
 					{this.getEvents()}
 				</section>
+				</div>
 			</React.Fragment>
 		);
 	}
