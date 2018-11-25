@@ -15,4 +15,4 @@ deploy:
   github_token: $githubToken
   local_dir: dist
   on:
-    branch: gh-pages
+    branch: master
