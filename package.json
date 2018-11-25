@@ -4,7 +4,7 @@
   "description": "StreamJar Developer Site",
   "scripts": {
     "start": "webpack-dev-server --config webpack.config.js",
-    "prod": "rm -rf dist && webpack --config webpack.prod.js",
+    "prod": "rm -rf dist && webpack --config webpack.prod.js && cp _redirects dist/_redirects",
     "lint": "tslint -c tslint.json --project tsconfig.json \"src/**/*\""
   },
   "author": "Luke Thompson <luke@streamjar.tv>",
