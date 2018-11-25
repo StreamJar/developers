@@ -1,6 +1,8 @@
 language: node_js
 node_js:
   - "stable"
+before_install:
+  - npm install netlify-cli -g
 cache:
   directories:
   - node_modules
@@ -9,10 +11,8 @@ script:
   - npm run lint
   - npm run prod
 deploy:
-  provider: pages
+  provider: script
+  script: netlify deploy -t $netlify --prod -dir=dist
   skip_cleanup: true
-  fqdn: developers-tmp.streamjar.tv
-  github_token: $githubToken
-  local_dir: dist
   on:
     branch: master
