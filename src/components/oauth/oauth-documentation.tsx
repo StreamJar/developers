@@ -24,7 +24,7 @@ export class OAuthDocumentation extends React.PureComponent {
 								<td> refresh_token </td>
 								<td> expires once used (or revoked) </td>
 							</tr>
-		
+
 							<tr>
 								<td> implicit access_token </td>
 								<td> expires after <strong> 1 year </strong> (or once revoked)</td>

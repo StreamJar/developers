@@ -11,6 +11,7 @@ script:
 deploy:
   provider: pages
   skip_cleanup: true
+  fqdn: developers-tmp.streamjar.tv
   github_token: $githubToken
   local_dir: dist
   on:
