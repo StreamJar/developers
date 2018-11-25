@@ -12,7 +12,7 @@ script:
   - npm run prod
 deploy:
   provider: script
-  script: netlify deploy -t $netlify --prod -dir=dist
+  script: netlify deploy --prod -dir=dist
   skip_cleanup: true
   on:
     branch: master
