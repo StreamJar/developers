@@ -129,7 +129,7 @@ export class LiveEvents extends React.PureComponent<{}, ILiveEventsState> {
 					<Button raised={true} icon="menu" onClick={this.toggleSidebar}></Button>
 				</div>
 
-				<div className="flex layout-column-xs layout-row-sm layout-row-md" style={{ height: '100%'}}>
+				<div className="flex layout-column-xs layout-row-sm layout-row-md">
 					<aside className={`${sidebarStyles.sidebar} flex-20-md ${this.state.sidebarVisible ? 'force-show' : ''}`}>
 						<div className="hide-element-desktop"><Button round={true} raised={true} icon="close" onClick={this.toggleSidebar}></Button></div>
 						<h5 className={sidebarStyles.sidebar__title}> Live Events </h5>

@@ -11,10 +11,9 @@
   "license": "MIT",
   "dependencies": {
     "@material/animation": "^0.39.0",
-    "@streamjar/frontend-common": "^3.1.6",
-    "@streamjar/frontend-common-core": "^1.0.9",
-    "@streamjar/ui-react": "^2.0.4",
-    "@streamjar/ui-shared": "^2.0.4",
+    "@streamjar/frontend-common-core": "^1.2.6",
+    "@streamjar/ui-react": "^2.1.5",
+    "@streamjar/ui-shared": "^2.1.5",
     "@types/react-highlight": "^0.12.1",
     "@types/react-redux": "^6.0.2",
     "@types/react-router": "^4.0.31",
@@ -61,9 +60,6 @@
     "webpack-bundle-analyzer": "^2.13.1",
     "webpack-cli": "^3.0.7",
     "webpack-dev-server": "^3.1.4"
-  },
-  "publishConfig": {
-    "registry": "https://npm.sjsrv.uk"
   },
   "sideEffects": [
     "*.scss"
