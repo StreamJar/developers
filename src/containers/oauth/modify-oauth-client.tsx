@@ -119,12 +119,12 @@ class ModifyOAuthClientComponent extends BaseDialog<ModifyOauthClientProps & IDi
 				name: this.state.name,
 				redirect: this.state.redirect,
 				website: this.state.website,
-				secret: `${this.state.secret}`,
+				secret: this.state.secret,
 			});
 		}
 	}
 
-	private setField(name: keyof IModifyOAuthClientState, value: string): void {
+	private setField(name: keyof IModifyOAuthClientState, value: string | boolean): void {
 		this.setState({ [name]: value } as any);
 	}
 
@@ -139,7 +139,7 @@ class ModifyOAuthClientComponent extends BaseDialog<ModifyOauthClientProps & IDi
 
 		if (this.props.client.secret) {
 			inputs.push(
-				<Input key="secret" name="secret" type="text" title="Client Secret" readonly={true} value={this.props.client.secret} />,
+				<Input key="secret" name="secret" type="text" title="Client Secret" readonly={true} value={`${this.props.client.secret}`} />,
 			);
 		}
 
