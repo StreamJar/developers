@@ -1,5 +1,5 @@
 import { IDocumentationEndpoint } from '@streamjar/frontend-common-core/models';
-import { Button } from '@streamjar/ui-react';
+import { Button, Icon } from '@streamjar/ui-react';
 import * as React from 'react';
 import * as ReactMarkdown from 'react-markdown';
 import { connect } from 'react-redux';
@@ -31,7 +31,7 @@ class ApiGroupComponent extends React.Component<ApiGroupProps> {
 
 		const ep = this.props.endpoints.map(i => (
 			<div key={i.name} className={`${styles.apiEndpoint} layout-column`}>
-				<h4> {i.name} </h4>
+				<h4> {i.internal ? (<><Icon icon="vpn_key" /> &nbsp; </>) : null} {i.name} </h4>
 				<ReactMarkdown source={i.description} />
 				<div className="layout-row layout-align-end-center">
 					<Link to={`/api/${category.name}/${group.name}/${i.name}`}><Button raised={true}> View Endpoint </Button></Link>

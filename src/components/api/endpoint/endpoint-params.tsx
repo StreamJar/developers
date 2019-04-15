@@ -19,22 +19,41 @@ export class EndpointParams extends React.PureComponent<IEndpointParamsProps> {
 
 		return (
 			<EndpointSection name={name}>
-				<table className={styles.endpointParams}>
-					<tbody>
-						{params.map(param => this.getTableRow(param))}
-					</tbody>
-				</table>
+				{params.map(param => this.getTableRow(param))}
 			</EndpointSection>
 		);
 	}
 
 	private getTableRow(parameter: IDocumentationParam): JSX.Element {
+		const values = parameter.values ? (
+			<div className="layout-row layout-align-start-center">
+				<p className={styles.paramValues}> Values:</p>
+				{parameter.values.map(val => <div className={styles.paramValue} key={val}>{val}</div>)}
+			</div>
+		) : null;
+
+		const defaultVal = parameter.defaultValue ? (
+			<div className="layout-row layout-align-start-center">
+				<p className={styles.paramValues}> Default: </p>
+				<div style={{ paddingLeft: 5 }}> {parameter.defaultValue} </div>
+			</div>
+		) : null;
+
 		return (
-			<tr key={parameter.key}>
-				<td style={{ width: '20%', paddingRight: 15 }}> {`\{${parameter.key}\}`} </td>
-				<td> {parameter.description} </td>
-				<td style={{ width: '15%', paddingLeft: 15 }}> {parameter.value.type} </td>
-			</tr>
+			<div className={styles.param} key={parameter.name}>
+				<div className="layout-row layout-align-between-center">
+					<div className="layout-row layout-align-start-center">
+						<code className={styles.paramName}> {parameter.name} </code>
+						{!parameter.optional && <p className={styles.paramRequired}>REQUIRED</p>}
+					</div>
+					<div className="jar-tag">{parameter.kind}</div>
+				</div>
+
+				{defaultVal}
+				{values}
+
+				<p className={styles.paramDescription}>{parameter.description}</p>
+			</div>
 		);
 	}
 }

@@ -5,3 +5,40 @@
 		padding: 5px 0;
 	}
 }
+
+
+.paramName {
+}
+
+.paramRequired {
+	padding-left: 5px;
+	padding-top: 1px;
+	font-weight: bold;
+	font-size: 10px;
+	opacity: 0.5;
+}
+
+.paramDescription {
+}
+
+.param {
+	background: #232323 !important;
+	padding: 7.5px 15px;
+	margin-bottom: 5px;
+	border-radius: 4px;
+}
+
+.paramValues {
+	font-weight: bold;
+	text-transform: uppercase;
+	opacity: 0.5;
+	font-size: 12px;
+	padding-top: 3px;
+}
+.paramValue {
+	opacity: 0.8;
+	padding: 3px 6px;
+	border-radius: 3px;
+	background: #65358a;
+	margin-left: 5px;
+}

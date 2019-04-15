@@ -22,7 +22,7 @@ export function apiDocs(state: IApiDocsState = defaultApiDocsState, action: ApiD
 			return { ...state, entities: { groups: {}, categories: {}, endpoints: {} }, result: [], isFetching: true, error: null };
 
 		case ApiDocActionTypes.FETCH_DOCS_SUCCESS:
-			return { ...state, isFetching: false, ...normalize(action.payload.docs, [category])};
+			return { ...state, isFetching: false, ...normalize(action.payload.docs, [category]) };
 		}
 
 	return state;

@@ -1,4 +1,4 @@
-import { IDocumentationEndpoint} from '@streamjar/frontend-common-core/models';
+import { IDocumentationEndpoint, Internal} from '@streamjar/frontend-common-core/models';
 import { schema } from 'normalizr';
 
 export const endpoint = new schema.Entity('endpoints', {}, { idAttribute: 'name' });
@@ -13,7 +13,7 @@ export const category = new schema.Entity('categories', {
 
 export interface IApiDocsState {
 	entities: {
-		groups: { [key: string]: { name: string; endpoints: string[]} };
+		groups: { [key: string]: { name: string; endpoints: string[]; internal: boolean } };
 		categories: { [key: string]: { name: string; groups: string[] } };
 		endpoints: { [key: string]: IDocumentationEndpoint };
 	};
