@@ -36,7 +36,8 @@ class ApiEndpointComponent extends React.Component<ApiEndpointProps> {
 				<EndpointUrl endpoint={endpoint} />
 
 				<div className={`${styles.endpoint__scroller} flex`}>
-					<EndpointParams name="Query Parameters" params={endpoint.urlParams} />
+					<EndpointParams name="URL Parameters" params={endpoint.urlParams} />
+					<EndpointParams name="Query Parameters" params={endpoint.queryParams} />
 					<EndpointParams name="Payload Parameters" params={endpoint.bodyParams} />
 					<EndpointPermissions endpoint={endpoint} />
 					<EndpointResponses responses={endpoint.responses} />
