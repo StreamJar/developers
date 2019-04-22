@@ -14,7 +14,7 @@ export class InvalidResponseError extends Error {
 export class JarService extends HttpService {
 	constructor() {
 		super({
-			endpoint: 'https://jar.streamjar.tv',
+			endpoint: 'https://local.streamjar.tv/api',
 			version: '2',
 		});
 	}

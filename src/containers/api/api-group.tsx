@@ -19,7 +19,7 @@ export interface IApiGroupOwnProps {
 
 export interface IApiGroupProps {
 	category: { name: string; groups: string[] };
-	group: { name: string; endpoints: string[] };
+	group: { name: string; endpoints: string[]; subGroup: string | null };
 	endpoints: IDocumentationEndpoint[];
 }
 
@@ -41,7 +41,7 @@ class ApiGroupComponent extends React.Component<ApiGroupProps> {
 
 		return (
 			<React.Fragment>
-				<h3 style={{ paddingLeft: 20 }}> {category.name} / {group.name} </h3>
+				<h3 style={{ paddingLeft: 20 }}> {category.name} / {group.subGroup && `${group.subGroup} /`} {group.name} </h3>
 				{ep}
 			</React.Fragment>
 		);
@@ -52,7 +52,7 @@ function mapStateToProps(state: IState, props: IApiGroupOwnProps): IApiGroupProp
 	if (!state.apiDocs.entities.groups[props.match.params.group]) {
 		return {
 			endpoints: [],
-			group: { name: '', endpoints: [] },
+			group: { name: '', endpoints: [], subGroup: null },
 			category: { name: '', groups: [] },
 		};
 	}

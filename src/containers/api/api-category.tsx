@@ -14,7 +14,7 @@ export interface IApiCategoryOwnProps {
 
 export interface IApiCategoryProps {
 	category: { name: string; groups: string[] };
-	groups: { name: string; endpoints: string[]; internal: boolean }[];
+	groups: { name: string; endpoints: string[]; internal: boolean; subGroup: string | null }[];
 }
 
 export type ApiCategory = IApiCategoryOwnProps & IApiCategoryProps;
@@ -23,10 +23,34 @@ class ApiCategoryComponent extends React.Component<ApiCategory> {
 	public render() {
 		const { categoryName, groups } = this.props;
 
+		const g = groups.sort((a, b) => {
+			if (a.subGroup === b.subGroup) {
+				return a.name.localeCompare(b.name);
+			}
+
+			if (a.subGroup === null) {
+				return -1;
+			}
+
+			return a.subGroup.localeCompare(b.subGroup!);
+		});
+
+		let last: string | null;
+
 		return (
 			<React.Fragment>
 				<h5 className={sidebarStyles.sidebar__title}> {categoryName} </h5>
-				{groups.map(i => <Link key={i.name} to={`/api/${categoryName}/${i.name}`}>{this.getButton(i)}</Link>)}
+				{g.map(i => { // tslint:disable-line
+					const isDifferent = last !== i.subGroup && i.subGroup !== null;
+					last = i.subGroup;
+
+					return (
+						<>
+							{isDifferent && <h6 className={sidebarStyles.subGroup}>{i.subGroup}</h6>}
+							<Link key={i.name} to={`/api/${categoryName}/${i.name}`}>{this.getButton(i)}</Link>
+						</>
+					);
+				})}
 			</React.Fragment>
 		);
 	}
