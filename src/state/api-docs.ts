@@ -13,7 +13,7 @@ export const category = new schema.Entity('categories', {
 
 export interface IApiDocsState {
 	entities: {
-		groups: { [key: string]: { name: string; endpoints: string[]; internal: boolean } };
+		groups: { [key: string]: { name: string; endpoints: string[]; internal: boolean; subGroup: string | null } };
 		categories: { [key: string]: { name: string; groups: string[] } };
 		endpoints: { [key: string]: IDocumentationEndpoint };
 	};

@@ -55,7 +55,7 @@ class ApiCategoryComponent extends React.Component<ApiCategory> {
 		);
 	}
 
-	private getButton = (i: { name: string; endpoints: string[]; internal: boolean }): JSX.Element => {
+	private getButton = (i: { name: string; endpoints: string[]; internal: boolean; subGroup: string | null }): JSX.Element => {
 		return (
 			<Button onClick={this.props.onClick} icon={i.internal ? 'vpn_key' : ''} colour={i.internal ? 'danger' : 'primary'}>
 				{i.name}
