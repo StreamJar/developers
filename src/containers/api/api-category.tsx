@@ -23,17 +23,25 @@ class ApiCategoryComponent extends React.Component<ApiCategory> {
 	public render() {
 		const { categoryName, groups } = this.props;
 
-		const g = groups.sort((a, b) => {
-			if (a.subGroup === b.subGroup) {
-				return a.name.localeCompare(b.name);
-			}
+		let nll: any[] = [];
+		const a: { [key: string]: any[] } = {};
 
-			if (a.subGroup === null) {
-				return -1;
+		groups.forEach(i => {
+			if (i.subGroup === null) {
+				nll.push(i);
+			} else {
+				a[i.subGroup] = [...(a[i.subGroup] || []), i];
 			}
-
-			return a.subGroup.localeCompare(b.subGroup!);
 		});
+
+		nll = nll.filter(i => i.subGroup === null)
+			.sort((a, b) => a.name.localeCompare(b.name));
+
+		Object.keys(a).sort((a, b) => a.localeCompare(b)).forEach(key => {
+			nll = nll.concat(...(a[key].sort((a, b) => a.name.localeCompare(b.name))));
+		});
+
+		const g = nll;
 
 		let last: string | null;
 

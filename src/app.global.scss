@@ -1,17 +1,7 @@
 :global {
 	@import '~@streamjar/ui-shared/styles/ui';
-	@import '~@streamjar/ui-shared/styles/components/ripple/ripple';
-	@import '~@streamjar/ui-shared/styles/theme';
+	@import '~@streamjar/ui-shared/styles/components/ripple';
 	@import '~@streamjar/ui-shared/styles/flex';
-
-	@import "~highlight.js/styles/atom-one-dark.css";
-
-	$theme: (
-		gradient: linear-gradient(to bottom right, #693194 0%, #633884 100%),
-		primary: #643688,
-	);
-
-	@include jar-theme($theme);
 
 	#app {
 		height: 100vh;
