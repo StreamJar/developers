@@ -4,8 +4,8 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
-import { OAuthAction } from '../../actions/oauth';
-import { IState } from '../../state';
+import { OAuthAction } from '../../store/actions/oauth';
+import { IState } from '../../store/state';
 import ModifyOAuthClient from './modify-oauth-client';
 
 export interface IOAuthClientOwnProps {

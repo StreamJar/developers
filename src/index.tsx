@@ -5,18 +5,17 @@ import { BrowserRouter } from 'react-router-dom';
 import { applyMiddleware, createStore } from 'redux';
 
 import './app.global.scss';
-import { App } from './components/app';
-import { epics, rootEpics } from './epics';
-import { root } from './reducers';
+import { App } from './components/App';
+import { epics, rootEpics } from './store/epics';
+import { root } from './store/reducers';
 
 const store = createStore(root, applyMiddleware(epics, () => next => action => next({ ...action })));
 epics.run(rootEpics);
 
-ReactDOM.render(
+ReactDOM.render((
 	<Provider store={store}>
 		<BrowserRouter>
 			<App />
 		</BrowserRouter>
-	</Provider>,
-	document.getElementById('app'),
-);
+	</Provider>
+),              document.getElementById('app');

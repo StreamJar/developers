@@ -6,7 +6,7 @@ import { EndpointParams } from '../../components/api/endpoint/endpoint-params';
 import { EndpointPermissions } from '../../components/api/endpoint/endpoint-permissions';
 import { EndpointResponses } from '../../components/api/endpoint/endpoint-responses';
 import { EndpointUrl } from '../../components/api/endpoint/endpoint-url';
-import { IState } from '../../state';
+import { IState } from '../../store/state';
 import * as styles from './api-endpoint.scss';
 
 export interface IApiEndpointOwnProps {

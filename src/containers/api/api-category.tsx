@@ -3,7 +3,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { IState } from '../../state';
+import { IState } from '../../store/state';
 
 import * as sidebarStyles from '../../components/sidebar.scss';
 

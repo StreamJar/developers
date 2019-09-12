@@ -1,52 +1,50 @@
-:global {
-	@import '~@streamjar/ui-shared/styles/ui';
-	@import '~@streamjar/ui-shared/styles/components/ripple';
-	@import '~@streamjar/ui-shared/styles/flex';
+@import '~@streamjar/ui-shared/styles/ui';
+@import '~@streamjar/ui-shared/styles/components/ripple';
+@import '~@streamjar/ui-shared/styles/flex';
 
-	#app {
-		height: 100vh;
-	}
+#app {
+	height: 100vh;
+}
 
-	.anchor {
-		z-index: 10000;
-	}
+.anchor {
+	z-index: 10000;
+}
 
-	.hljs {
-		border-top-left-radius: 0;
-		border-top-right-radius: 0;
-		margin-top: 15px;
-		color: #e1d5ea;
-		line-height: 1.8;
-		border: none;
-		font-family: monospace;
-		font-size: 14px;
-		background-color: #232323;
-		padding: 15px;
-	}
+.hljs {
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+	margin-top: 15px;
+	color: #e1d5ea;
+	line-height: 1.8;
+	border: none;
+	font-family: monospace;
+	font-size: 14px;
+	background-color: #232323;
+	padding: 15px;
+}
 
+.hide-element-desktop {
+	display: none;
+}
+
+@media #{map-get($breakpoints, xs)} {
 	.hide-element-desktop {
+		display: initial
+	}
+
+	aside:not(.force-show) {
 		display: none;
 	}
 
-	@media #{map-get($breakpoints, xs)} {
-		.hide-element-desktop {
-			display: initial
-		}
-
-		aside:not(.force-show) {
-			display: none;
-		}
-
-		aside.force-show {
-			position: absolute;
-			top: 0;
-			height: 100%;
-			left: 0;
-			right: -12px;
-			bottom: 0;
-			z-index: 1000;
-			margin: 0;
-			padding: 20px;
-		}
+	aside.force-show {
+		position: absolute;
+		top: 0;
+		height: 100%;
+		left: 0;
+		right: -12px;
+		bottom: 0;
+		z-index: 1000;
+		margin: 0;
+		padding: 20px;
 	}
 }

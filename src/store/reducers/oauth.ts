@@ -56,7 +56,7 @@ export function oauth(state: IOAuthState = defaultOAuthState, action: OAuthActio
 			return { ...state, status: { ...state.status, [action.payload.app.client!]: { saving: true } } };
 
 		case OAuthActionTypes.DELETE_CLIENT_SUCCESS:
-			delete state.status[action.payload.appId];
+			delete state.status[action.payload.appId]; // tslint:disable-line
 
 			return { ...state, clients: [...state.clients.filter(i => (i.client! !== action.payload.appId))], status: {
 				...state.status,

@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import { Link, Route } from 'react-router-dom';
 import { Dispatch } from 'redux';
 
-import { ApiDocAction } from '../../actions/api-doc';
 import { ApiUsingApiPage } from '../../components/api/pages/using-api';
-import { IState } from '../../state';
+import { ApiDocAction } from '../../store/actions/api-doc';
+import { IState } from '../../store/state';
 import ApiCategory from './api-category';
 import ApiEndpoint from './api-endpoint';
 import ApiGroupComponent from './api-group';

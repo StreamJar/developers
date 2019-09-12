@@ -5,7 +5,7 @@ import * as ReactMarkdown from 'react-markdown';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { IState } from '../../state';
+import { IState } from '../../store/state';
 import * as styles from './api-group.scss';
 
 export interface IApiGroupOwnProps {

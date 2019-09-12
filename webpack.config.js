@@ -37,7 +37,9 @@ module.exports = {
 					{
 						loader: 'sass-loader',
 						options: {
-							includePaths: glob.sync('./node_modules').map((d) => path.join(__dirname, d)),
+							sassOptions: {
+								includePaths: glob.sync('./node_modules').map((d) => path.join(__dirname, d)),
+							}
 						}
 					},
 				],
@@ -52,15 +54,17 @@ module.exports = {
 					{
 						loader: 'css-loader',
 						options: {
-							modules: true,
-							localIdentName: '[path][name]__[local]--[hash:base64:5]',
-							importLoaders: 2,
+							modules: {
+								localIdentName: '[path][name]__[local]--[hash:base64:5]',
+							},
 						},
 					},
 					{
 						loader: 'sass-loader',
 						options: {
-							includePaths: glob.sync('./node_modules').map((d) => path.join(__dirname, d)),
+							sassOptions: {
+								includePaths: glob.sync('./node_modules').map((d) => path.join(__dirname, d)),
+							}
 						}
 					},
 				],

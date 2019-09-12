@@ -47,6 +47,8 @@
 
 		// todo: remove these
 		"no-console": false,
-		"no-suspicious-comment": false
+		"no-suspicious-comment": false,
+		"newline-per-chained-call": false,
+		"no-null-keyword": false
 	}
 }

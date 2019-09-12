@@ -1,6 +1,6 @@
 import { IOAuthApplication } from '@streamjar/frontend-common-core/models';
 
-import { action, ActionsUnion } from '../util/helpers';
+import { action, ActionsUnion } from '../../util/helpers';
 
 export enum OAuthActionTypes {
 	FETCH_CLIENTS_REQUEST = 'FETCH_CLIENTS',
